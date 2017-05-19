@@ -1,0 +1,105 @@
+{% extends "::base.html.twig" %}
+
+
+
+{% block body %}
+
+  <div class=""style="float: right;">
+<br/>
+      <a class="btn btn-default" href="{{ path('logout') }}" role="button">Deconnect</a>
+  </div>
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1><span>Welcome to</span> My app {{  app_name }}</h1>
+            </div>
+
+         <div>
+             <h3>Somme Number</h3>
+
+
+             {{ form_start(form, {'method': 'POST','action':path('test')}) }}
+                 <div class="form-group">
+                     <label>Number 1</label>
+                     {{ form_widget(form.number1 ,{"attr":{'class':'form-control'}}) }}
+                     {{ form_errors(form.number1) }}
+                 </div>
+                 <div class="form-group">
+                     <label >Number 2</label>
+                     {{ form_widget(form.number2 ,{"attr":{'class':'form-control'}}) }}
+                     {{ form_errors(form.number2) }}
+                 </div>
+             {{ form_widget(form.somme ,{"attr":{'class':'btn btn-default'}}) }}
+
+             {{ form_end(form) }}
+
+
+         </div>
+
+        </div>
+    </div>
+
+    <div>
+        <h3>Listing:</h3>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Number1</th>
+        <th>Number2</th>
+        <th>Somme result</th>
+    </tr>
+    </thead>
+    <tbody>
+
+ {% for item in listSomme%}
+<tr><td>
+
+{{ item.number1 }}
+    </td>
+<td>
+    {{ item.number2}}
+
+</td>
+    <td>
+        {% set result = item.number1+item.number2 %}
+        {{  result }}
+    </td>
+</tr>
+     {% endfor %}
+
+    </tbody>
+
+
+</table>
+    </div>
+    <center><div class="well well-lg primary"><span class="label label-primary"> La somme est egale a {{ somme }}</div></center>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+        h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+        h1 { font-size: 36px; }
+        h2 { font-size: 21px; margin-bottom: 1em; }
+        p { margin: 0 0 1em 0; }
+        a { color: #0000F0; }
+        a:hover { text-decoration: none; }
+        code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+        #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+        #container { padding: 2em; }
+        #welcome, #status { margin-bottom: 2em; }
+        #welcome h1 span { display: block; font-size: 75%; }
+        #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
+        #icon-book { display: none; }
+
+        @media (min-width: 768px) {
+            #wrapper { width: 80%; margin: 2em auto; }
+            #icon-book { display: inline-block; }
+            #status a, #next a { display: block; }
+
+            @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+            @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+            .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
+        }
+    </style>
+{% endblock %}

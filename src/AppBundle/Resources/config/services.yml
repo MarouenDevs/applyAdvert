@@ -1,0 +1,14 @@
+services:
+    app.calculator:
+        class: AppBundle\Service\Calculator
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app.pre_execute_controlller:
+        class: AppBundle\Listener\ControllerListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller,method:onCoreController }
+    app.somme_listener:
+            class: AppBundle\Listener\SommeListener
+            arguments: ['@app.calculator']
+            tags:
+                - { name: kernel.event_listener, event: somme_event ,method:somme }
