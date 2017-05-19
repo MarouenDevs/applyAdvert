@@ -2,6 +2,8 @@ services:
     app.calculator:
         class: AppBundle\Service\Calculator
         arguments: ['@doctrine.orm.entity_manager']
+    app.password_encoder:
+        class: AppBundle\Service\PasswordEncoder
 
     app.pre_execute_controlller:
         class: AppBundle\Listener\ControllerListener

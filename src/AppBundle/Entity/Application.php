@@ -46,6 +46,11 @@ class Application
      */
     private $publishAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User",inversedBy="user")
+     */
+    private $user ;
+
 
     /**
      * Get id

@@ -8,6 +8,7 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
+use AppBundle\Entity\User;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Category;
@@ -37,8 +38,25 @@ class LoadCategory implements FixtureInterface
             // On la persiste
             $em->persist($category);
         }
+// On déclenche l'enregistrement de toutes les catégories
+// password test en md5
+        $users = array(
 
-        // On déclenche l'enregistrement de toutes les catégories
+            array('nicolas', '9a3cd5c30ca8e767d7b6c5a5357d9fe7601060fc'),
+            array('george', '9a3cd5c30ca8e767d7b6c5a5357d9fe7601060fc'),
+            array("ali", '9a3cd5c30ca8e767d7b6c5a5357d9fe7601060fc'),
+        );
+
+        foreach ($users as $user) {
+            // On crée la catégorie
+            $category = new User();
+            $category->setUsername($user[0]);
+            $category->setPassword($user[1]);
+
+            // On la persiste
+            $em->persist($category);
+        }
+
         $em->flush();
 
 

@@ -18,21 +18,21 @@ class PagesController extends Controller
     public $_appName = "DemoTeam";
 
 
-
-
+    /**
+     * If you want to execute code before run any controller action
+     */
     public function preExecute(){
 
 
-       /* var_dump('alo');
-        exit;*/
+
     }
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         // replace this example code with whatever you need
-        return $this->render('AppBundle:Default:index.html.twig');
+        return $this->render('AppBundle:Pages:index.html.twig');
     }
 
 
@@ -81,7 +81,7 @@ class PagesController extends Controller
         }
 
 
-        return $this->render('AppBundle:Default:somme.html.twig', array('app_name' => $this->_appName, 'somme' => $sommeService->somme($number1, $number2), 'form' => $form->createView(), 'listSomme' => $listSomme));
+        return $this->render('AppBundle:Pages:somme.html.twig', array('app_name' => $this->_appName, 'somme' => $sommeService->somme($number1, $number2), 'form' => $form->createView(), 'listSomme' => $listSomme));
     }
 
 
