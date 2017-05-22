@@ -47,7 +47,7 @@ class Application
     private $publishAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User",inversedBy="user")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User",inversedBy="applications")
      */
     private $user ;
 

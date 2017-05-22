@@ -45,8 +45,8 @@ class User implements  UserInterface
     private $username;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Application" ,mappedBy="application")
-     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Application" ,mappedBy="user")
+     *
      */
     private $applications;
 

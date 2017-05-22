@@ -1,0 +1,32 @@
+{% macro dataTable(data, shownItems) %}
+
+    <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline">
+
+        <thead>
+
+        {% for item in shownItems %}
+
+            <th>{{item}}</th>
+        {% endfor %}
+        </thead>
+        <tbody>
+        {% for element in data %}
+
+           <tr>
+               {% for item in shownItems %}
+
+                   <td>{{ attribute(element,item)}}</td>
+               {% endfor %}
+
+           </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+{% endmacro %}

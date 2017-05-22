@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+{% import ":macros:table.html.twig" as table %}
+
+{% block page_title %} Liste des categories{% endblock %}
+
+
+
+{% block page_content %}
+
+
+    {{ table.dataTable(categories, ['nom','description']) }}
+
+{% endblock%}
+
+
+
+{% block  page_js%}
+    <script src="{{asset('bundles/app/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('bundles/app/vendor/datatables-plugins/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('bundles/app/vendor/datatables-responsive/dataTables.responsive.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.dataTable ').DataTable();
+        });
+    </script>
+
+{% endblock %}
+
+    {% block page_css %}
+        <link href="{{asset('bundles/app/vendor/datatables-plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
+        <link href="{{asset('bundles/app/vendor/datatables-responsive/dataTables.responsive.css')}}" rel="stylesheet">
+    {% endblock %}

@@ -52,6 +52,7 @@ class PagesController extends Controller
         $number1 = 0;
         $number2 = 0;
         $somme = new Somme();
+
         $form = $this->get('form.factory')->create(new SommeType(), $somme);
         $em = $this->get('doctrine')->getEntityManager();
 
